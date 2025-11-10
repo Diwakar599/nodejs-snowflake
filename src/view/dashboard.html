@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | ShopHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      min-height: 100vh;
+    }
+
+   .header-bar {
+  width: 100%;
+  background: linear-gradient(90deg, #4F46E5, #9333EA);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #E0E7FF;
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 4px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffffff;
+  border-bottom-color: #FCD34D;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+ <header class="header-bar">
+  <div class="header-left">
+    <h1 class="logo">🛍️ ShopHub</h1>
+  </div>
+
+  <nav class="nav-links">
+    <a href="#" class="active">Dashboard</a>
+    <a href="#">Orders</a>
+    <a href="/products">Products</a>
+    <a href="#">Customers</a>
+    <a href="#">Settings</a>
+  </nav>
+
+  <div class="header-right">
+    <a href="/login" class="logout-btn">Logout</a>
+  </div>
+</header>
+
+
+  <!-- Main content -->
+  <main class="flex-1 p-6">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Dashboard Overview</h1>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white shadow rounded-xl p-5">
+        <h2 class="text-gray-500 text-sm mb-2">Total Sales</h2>
+        <p class="text-2xl font-semibold text-indigo-600">$12,540</p>
+      </div>
+
+      <div class="bg-white shadow rounded-xl p-5">
+        <h2 class="text-gray-500 text-sm mb-2">Orders</h2>
+        <p class="text-2xl font-semibold text-indigo-600">320</p>
+      </div>
+
+      <div class="bg-white shadow rounded-xl p-5">
+        <h2 class="text-gray-500 text-sm mb-2">Customers</h2>
+        <p class="text-2xl font-semibold text-indigo-600">1,245</p>
+      </div>
+
+      <div class="bg-white shadow rounded-xl p-5">
+        <h2 class="text-gray-500 text-sm mb-2">Pending Deliveries</h2>
+        <p class="text-2xl font-semibold text-indigo-600">42</p>
+      </div>
+    </div>
+
+    <!-- Recent Orders Table -->
+    <div class="mt-10 bg-white shadow rounded-xl p-5">
+      <h2 class="text-lg font-semibold mb-4 text-gray-700">Recent Orders</h2>
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="text-left text-gray-600 border-b">
+            <th class="py-2">Order ID</th>
+            <th class="py-2">Customer</th>
+            <th class="py-2">Total</th>
+            <th class="py-2">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b text-gray-700">
+            <td class="py-2">#1023</td>
+            <td>John Doe</td>
+            <td>$120.00</td>
+            <td><span class="text-green-600 font-medium">Delivered</span></td>
+          </tr>
+          <tr class="border-b text-gray-700">
+            <td class="py-2">#1024</td>
+            <td>Jane Smith</td>
+            <td>$89.50</td>
+            <td><span class="text-yellow-500 font-medium">Pending</span></td>
+          </tr>
+          <tr class="text-gray-700">
+            <td class="py-2">#1025</td>
+            <td>Michael Lee</td>
+            <td>$45.00</td>
+            <td><span class="text-red-500 font-medium">Cancelled</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+
+</html>

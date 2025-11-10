@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login | ShopHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.9), rgba(147, 51, 234, 0.9)),
+                  url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 1rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .shophub-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #4F46E5;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="shophub-title">🛍️ ShopHub</div>
+    <p class="tagline">Your one-stop shop for trends, deals & fashion.</p>
+
+    <h2 class="text-xl font-semibold text-center text-gray-800 mb-6">Welcome Back</h2>
+
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required
+          class="mt-1 w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Your password" required
+          class="mt-1 w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <button type="submit"
+        class="w-full bg-indigo-600 text-white py-2 rounded-lg text-sm font-semibold shadow-md transition-all hover:bg-indigo-700">
+        Login
+      </button>
+    </form>
+
+    <div id="message" class="text-center mt-4 text-sm"></div>
+
+    <p class="text-center text-sm mt-4 text-gray-600">
+      Don’t have an account?
+      <a href="/signup" class="text-indigo-600 hover:underline">Sign up</a>
+    </p>
+  </div>
+
+  <script>
+    $('#loginForm').on('submit', function (e) {
+      e.preventDefault();
+
+      const formData = {
+        email: $('#email').val(),
+        password: $('#password').val(),
+      };
+
+      $.ajax({
+        url: '/login',
+        type: 'POST',
+        data: JSON.stringify(formData),
+        contentType: 'application/json',
+        success: function (response) {
+          $('#message').html('<p class="text-green-600">Login successful! Redirecting...</p>');
+          setTimeout(() => window.location.href = '/dashboard', 1200);
+        },
+        error: function (xhr) {
+          $('#message').html('<p class="text-red-600">' + xhr.responseText + '</p>');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Signup | MyApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ✅ Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ✅ Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ✅ jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #4F46E5, #9333EA);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
+      padding: 2rem;
+    }
+    input:focus {
+      outline: none;
+      border-color: #4F46E5;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    }
+    button:hover {
+      background-color: #4338CA;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Create your account</h2>
+
+    <form id="signupForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="name">Full Name</label>
+        <input id="name" name="name" type="text" placeholder="John Doe" required
+          class="mt-1 w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required
+          class="mt-1 w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="At least 8 characters" required minlength="8"
+          class="mt-1 w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="confirm_password">Confirm Password</label>
+        <input id="confirm_password" name="confirm_password" type="password" placeholder="Re-enter your password" required minlength="8"
+          class="mt-1 w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700" for="phone">Phone (optional)</label>
+        <input id="phone" name="phone" type="tel" placeholder="+91 90000 00000"
+          class="mt-1 w-full border rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500" />
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" id="agree" name="agree" required class="h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+        <label for="agree" class="text-sm text-gray-600">I agree to the <a href="#" class="text-indigo-600 hover:underline">Terms & Privacy Policy</a></label>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-indigo-600 text-white py-2 rounded-lg text-sm font-semibold shadow-md transition-all hover:bg-indigo-700">
+        Sign Up
+      </button>
+    </form>
+
+    <div id="message" class="text-center mt-4 text-sm"></div>
+  </div>
+
+  <script>
+    // Signup form submit
+    $('#signupForm').on('submit', function (e) {
+      e.preventDefault(); // stop form from refreshing page
+
+      // Collect form data
+      const formData = {
+        name: $('#name').val(),
+        email: $('#email').val(),
+        password: $('#password').val(),
+        confirm_password: $('#confirm_password').val(),
+        phone: $('#phone').val(),
+        agree: $('#agree').is(':checked') ? 1 : 0
+      };
+
+      // Simple password match check
+      if (formData.password !== formData.confirm_password) {
+        $('#message').html('<p class="text-red-600">Passwords do not match.</p>');
+        return;
+      }
+
+      // Send AJAX request
+      $.ajax({
+        url: '/signup',
+        type: 'POST',
+        data: JSON.stringify(formData),
+        contentType: 'application/json',
+        success: function (response) {
+          $('#message').html('<p class="text-green-600">Signup successful!</p>');
+          $('#signupForm')[0].reset();
+        },
+        error: function (xhr) {
+          $('#message').html('<p class="text-red-600">Error: ' + xhr.responseText + '</p>');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

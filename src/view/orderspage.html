@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Order</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+ 
+
+    <!-- Orders Table -->
+    <div class="bg-white rounded-2xl shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4 text-gray-800">Orders List</h2>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-200 rounded-lg">
+          <thead class="bg-gray-100 text-gray-700">
+            <tr>
+              <th class="px-4 py-2 text-left border-b">ID</th>
+              <th class="px-4 py-2 text-left border-b">Product ID</th>
+              <th class="px-4 py-2 text-left border-b">Quantity</th>
+              <th class="px-4 py-2 text-left border-b">Total Amount</th>
+              <th class="px-4 py-2 text-left border-b">Customer Name</th>
+              <th class="px-4 py-2 text-left border-b">Customer Email</th>
+              <th class="px-4 py-2 text-left border-b">Status</th>
+              <th class="px-4 py-2 text-left border-b">Created At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border-b">1</td>
+              <td class="px-4 py-2 border-b">101</td>
+              <td class="px-4 py-2 border-b">2</td>
+              <td class="px-4 py-2 border-b">$2599.98</td>
+              <td class="px-4 py-2 border-b">John Doe</td>
+              <td class="px-4 py-2 border-b">john@example.com</td>
+              <td class="px-4 py-2 border-b text-yellow-600 font-semibold">Pending</td>
+              <td class="px-4 py-2 border-b">2025-11-07 10:30:00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

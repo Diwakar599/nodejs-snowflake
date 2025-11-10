@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard | ShopHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(180deg, #6366F1, #8B5CF6);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sidebar a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: #E0E7FF;
+      font-weight: 500;
+      border-left: 4px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: rgba(255, 255, 255, 0.1);
+      border-left-color: #FCD34D;
+      color: #ffffff;
+    }
+    .sidebar-footer {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.875rem;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="text-center py-6 text-2xl font-semibold border-b border-indigo-400">
+        🛍️ ShopHub
+      </div>
+      <nav class="mt-4">
+        <a href="#" class="active">My Dashboard</a>
+        <a href="#">My Orders</a>
+        <a href="#">Wishlist</a>
+        <a href="#">Account Settings</a>
+        <a href="#">Support</a>
+        <a href="/login">Logout</a>
+      </nav>
+    </div>
+    <div class="sidebar-footer">
+      © 2025 ShopHub
+    </div>
+  </aside>
+
+  <!-- Main layout: center content + right profile -->
+  <div class="flex flex-1 p-6 gap-6">
+    
+    <!-- Main content -->
+    <main class="flex-1">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">Welcome Back, Diwakar 👋</h1>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white shadow rounded-xl p-5">
+          <h2 class="text-gray-500 text-sm mb-2">Orders Placed</h2>
+          <p class="text-2xl font-semibold text-indigo-600">24</p>
+        </div>
+        <div class="bg-white shadow rounded-xl p-5">
+          <h2 class="text-gray-500 text-sm mb-2">Wishlist Items</h2>
+          <p class="text-2xl font-semibold text-indigo-600">8</p>
+        </div>
+        <div class="bg-white shadow rounded-xl p-5">
+          <h2 class="text-gray-500 text-sm mb-2">Pending Deliveries</h2>
+          <p class="text-2xl font-semibold text-indigo-600">2</p>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="mt-10 bg-white shadow rounded-xl p-5">
+        <h2 class="text-lg font-semibold mb-4 text-gray-700">My Recent Orders</h2>
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="text-left text-gray-600 border-b">
+              <th class="py-2">Order ID</th>
+              <th class="py-2">Product</th>
+              <th class="py-2">Total</th>
+              <th class="py-2">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b text-gray-700">
+              <td class="py-2">#1001</td>
+              <td>Wireless Earbuds</td>
+              <td>$59.99</td>
+              <td><span class="text-green-600 font-medium">Delivered</span></td>
+            </tr>
+            <tr class="border-b text-gray-700">
+              <td class="py-2">#1002</td>
+              <td>Smartwatch</td>
+              <td>$129.00</td>
+              <td><span class="text-yellow-500 font-medium">Shipped</span></td>
+            </tr>
+            <tr class="text-gray-700">
+              <td class="py-2">#1003</td>
+              <td>Bluetooth Speaker</td>
+              <td>$89.50</td>
+              <td><span class="text-blue-600 font-medium">Processing</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Right side profile card -->
+    <aside class="w-full md:w-80 bg-white shadow rounded-xl p-5 h-fit">
+      <div class="flex items-center space-x-4">
+        <img src="https://i.pravatar.cc/100" alt="User" class="w-16 h-16 rounded-full">
+        <div>
+          <h2 class="font-semibold text-gray-800">Diwakar Reddy</h2>
+          <p class="text-sm text-gray-500">Premium Member</p>
+        </div>
+      </div>
+      <div class="mt-4 border-t pt-4">
+        <p class="text-sm text-gray-600"><strong>Email:</strong> diwakar@example.com</p>
+        <p class="text-sm text-gray-600"><strong>Phone:</strong> +91 98765 43210</p>
+        <button class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition">
+          Edit Profile
+        </button>
+      </div>
+    </aside>
+  </div>
+
+</body>
+</html>

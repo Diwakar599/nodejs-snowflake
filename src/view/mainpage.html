@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Your Premium Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header/Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-login,
+        .btn-signup {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-login:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-signup {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 5%;
+            gap: 3rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            flex: 1;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-cta {
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .product-price {
+            color: #667eea;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 5rem 5%;
+            margin-top: 3rem;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 3rem 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .product-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">ShopHub</div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#deals">Deals</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+     <div class="auth-buttons">
+  <a href="/login" class="btn-login">Login</a>
+  <a href="/signup" class="btn-signup">Sign Up</a>
+</div>
+
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Shop Smart,<br>Live Better</h1>
+            <p>Discover amazing products at unbeatable prices. Your premium shopping destination.</p>
+            <button class="hero-cta" onclick="exploreProducts()">Explore Now</button>
+        </div>
+        <div class="hero-image">
+            <div class="product-showcase">
+                <div class="product-card">
+                    <div class="product-icon">👕</div>
+                    <h3>Fashion</h3>
+                    <p class="product-price">$49.99</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">📱</div>
+                    <h3>Electronics</h3>
+                    <p class="product-price">$299.99</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🏠</div>
+                    <h3>Home & Living</h3>
+                    <p class="product-price">$89.99</p>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">⚽</div>
+                    <h3>Sports</h3>
+                    <p class="product-price">$39.99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Shop With Us?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🚚</div>
+                <h3>Free Shipping</h3>
+                <p>Fast and free delivery on all orders above $50</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💳</div>
+                <h3>Secure Payment</h3>
+                <p>100% secure transactions with encrypted payment</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔄</div>
+                <h3>Easy Returns</h3>
+                <p>30-day return policy with no questions asked</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⭐</div>
+                <h3>Quality Products</h3>
+                <p>Only the best brands and highest quality items</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showLogin() {
+            alert('Login page would open here! 🔐\n\nYou can integrate your login form or redirect to a login page.');
+        }
+
+        function showSignup() {
+            alert('Sign Up page would open here! 📝\n\nYou can integrate your registration form or redirect to a signup page.');
+        }
+
+        function exploreProducts() {
+            alert('Taking you to our amazing products! 🛍️');
+        }
+    </script>
+</body>
+
+</html>
