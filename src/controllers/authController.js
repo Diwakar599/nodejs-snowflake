@@ -6,6 +6,10 @@ exports.showLoginPage = (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'view', 'login.html'));
 };
 
+
+
+
+
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
